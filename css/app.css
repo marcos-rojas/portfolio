@@ -46,11 +46,6 @@ html {
     scroll-behavior: smooth;
 }
 
-
-
-
-
-
 body {
     background : var(--clr-light);
     color      : var(--clr-dark);
@@ -64,7 +59,9 @@ section {
     padding: 5em 2em;
     /*no touching the screen*/
 }
-
+#home{
+    padding: 02em 2em;
+}
 img {
     display  : block;
     max-width: 100%;
@@ -72,6 +69,16 @@ img {
 
 strong {
     font-weight: var(--fw-bold);
+}
+
+/* CANVAS*/
+
+#canvas1 {
+    position  : fixed;
+    top       : 0;
+    left      : 0;
+    background: black;
+    z-index   : -1;
 }
 
 /* ALL THAT HAS FOCUS*/
@@ -170,7 +177,7 @@ header {
 }
 
 .logo {
-    max-width: 100px;
+    max-width: 80px;
 }
 
 .nav {
@@ -453,6 +460,7 @@ generic: 300 600 900 for media query*/
 }
 
 .portfolio__img {
+    
     transition:
         transform 750ms cubic-bezier(.5, 0, .5, 1),
         opacity 250ms linear;
@@ -529,4 +537,5 @@ generic: 300 600 900 for media query*/
     margin-left : auto;
     margin-right: auto;
 }
+
 /* DIGITAL OCEAN: droplet*/
