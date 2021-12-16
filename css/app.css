@@ -449,18 +449,21 @@ generic: 300 600 900 for media query*/
     /*
     grid-template-columns: repeat(1fr, min-max(200px, 1fr));
      esto autoajusta*/
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
 }
 
 .portfolio__item {
     background: var(--clr-accent);
     overflow  : hidden;
+    height: 310px;
+    border: 2px solid white;
+    border-radius: 10px;
     /* allows item to grow but just like if we
     are near, img doen't "grow"*/
 }
 
 .portfolio__img {
-    
     transition:
         transform 750ms cubic-bezier(.5, 0, .5, 1),
         opacity 250ms linear;
