@@ -5,42 +5,28 @@
 }
 
 :root {
-    /* FONT FAMILY*/
     --ff-primary  : 'Source Sans Pro', sans-serif;
     --ff-secondary: 'Source Code Pro', monospace;
-    /*FONT WEIGHT*/
     --fw-reg      : 300;
     --fw-bold     : 900;
-    /* CUSTOM PROPERTY OF COLOR*/
     --clr-light   : #fff;
-    --clr-dark    : #303030;
-    --clr-accent  : #16e0bd;
-
-    /* FONT SIZE*/
-    --fs-h1  : 3rem;
-    --fs-h2  : 2.25rem;
-    --fs-h3  : 1.25rem;
-    --fs-body: 1rem;
-
-    /* BOX SHADOW*/
-    /*x offset yoffset blur*/
-    --bs: 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
+    --clr-dark    : #771055;
+    --clr-accent  : #4dcf26;
+    --fs-h1       : 3rem;
+    --fs-h2       : 2.25rem;
+    --fs-h3       : 1.25rem;
+    --fs-body     : 1rem;
+    --bs          : 0.25em 0.25em 0.75em rgba(0, 0, 0, 0.25),
         0.125em 0.125em 0.25em rgba(0, 0, 0, 0.15);
 }
 
-
-@media(min-width: 800px) {
-    :root {
-        /* FONT SIZE*/
-        --fs-h1  : 4.5rem;
-        --fs-h2  : 3.75rem;
-        --fs-h3  : 1.5rem;
-        --fs-body: 1.125rem;
-    }
+.portfolio {
+    display        : flex;
+    flex-wrap      : wrap;
+    align-items    : center;
+    justify-content: center;
+    gap            : 10px;
 }
-
-
-/* General Styles*/
 
 html {
     scroll-behavior: smooth;
@@ -57,11 +43,12 @@ body {
 
 section {
     padding: 5em 2em;
-    /*no touching the screen*/
 }
-#home{
+
+#home {
     padding: 02em 2em;
 }
+
 img {
     display  : block;
     max-width: 100%;
@@ -71,8 +58,6 @@ strong {
     font-weight: var(--fw-bold);
 }
 
-/* CANVAS*/
-
 #canvas1 {
     position  : fixed;
     top       : 0;
@@ -81,22 +66,17 @@ strong {
     z-index   : -1;
 }
 
-/* ALL THAT HAS FOCUS*/
 :focus {
     outline       : 3px solid var(--clr-accent);
     outline-offset: 3px;
-    /* when I press the button tab*/
-
 }
 
-/* how about button*/
 .btn {
     display        : inline-block;
     padding        : .5em 2.5em;
     background     : var(--clr-accent);
     color          : var(--clr-dark);
     text-decoration: none;
-    /*could be set on a link*/
     cursor         : pointer;
     font-size      : .8rem;
     text-transform : uppercase;
@@ -138,10 +118,6 @@ h3 {
     font-weight: var(--fw-reg);
 }
 
-
-
-/* the strong that is nested 
-need to be a block to be in its own line when screen is small*/
 .section__title--intro strong {
     display: block;
 }
@@ -287,14 +263,16 @@ header {
     bottom: 6px;
 }
 
-/* ---------------- Intro section--------------- */
 .intro {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* THIS IS APPLIED TO ALL SIZES*/
 .intro__img {
-    box-shadow: var(--bs);
+    filter: drop-shadow(0px 0px 4px var(--clr-dark));
+    height: 250px;
 }
 
 .section__subtitle--intro {
@@ -307,6 +285,7 @@ generic: 300 600 900 for media query*/
     .intro {
         display        : grid;
         width          : min-content;
+        height: 100vh;
         margin         : 0 auto;
         grid-column-gap: 1em;
         grid-template-areas:
@@ -318,6 +297,7 @@ generic: 300 600 900 for media query*/
     .intro__img {
         grid-area: img;
         min-width: 250px;
+        height: auto;
         position : relative;
         z-index  : 2;
     }
@@ -389,6 +369,7 @@ generic: 300 600 900 for media query*/
         margin-left: 2em;
     }
 
+
 }
 
 /* ---------------- About me--------------- */
@@ -402,40 +383,6 @@ generic: 300 600 900 for media query*/
     box-shadow: var(--bs);
 }
 
-@media(min-width: 600px) {
-    .about-me {
-        display              : grid;
-        grid-template-columns: 1fr 200px;
-        grid-template-areas  :
-            "title img"
-            "subtitle img"
-            "text img";
-        grid-column-gap: 2em;
-    }
-
-    .section__title--about {
-        grid-area  : title;
-        grid-column: 1;
-    }
-
-    .section__subtitle--about {
-        grid-column  : 1/-1;
-        /*one side to other side*/
-        grid-row     : 2;
-        position     : relative;
-        left         : -1em;
-        width        : calc(100% + 2em);
-        padding-left : 1em;
-        /*moving and do be over image*/
-        padding-right: calc(200px + 4em);
-    }
-
-    .about-me__img {
-        grid-area: img;
-        position : relative;
-        z-index  : 2;
-    }
-}
 
 /* ---------------- My work--------------- */
 .my-work {
@@ -444,29 +391,11 @@ generic: 300 600 900 for media query*/
     text-align      : center;
 }
 
-.portfolio {
-    display              : grid;
-    /*
-    grid-template-columns: repeat(1fr, min-max(200px, 1fr));
-     esto autoajusta*/
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 15px;
-}
-
-.portfolio__item {
-    background: var(--clr-accent);
-    overflow  : hidden;
-    height: 310px;
-    border: 2px solid white;
-    border-radius: 10px;
-    /* allows item to grow but just like if we
-    are near, img doen't "grow"*/
-}
-
 .portfolio__img {
     transition:
         transform 750ms cubic-bezier(.5, 0, .5, 1),
         opacity 250ms linear;
+    background-size: cover;
 }
 
 .portfolio__item:focus {
@@ -477,7 +406,7 @@ generic: 300 600 900 for media query*/
 
 .portfolio__img:hover,
 .portfolio__item:focus .portfolio__img {
-    transform: scale(1.2);
+    transform: scale(1.1);
     opacity  : .75;
 }
 
@@ -528,17 +457,55 @@ generic: 300 600 900 for media query*/
     /*there space to click*/
 }
 
-/* NEW PORTFOLIO ITRM INDIVIDUAL*/
-.portfolio-item-individual {
-    padding  : 0 2em 2em;
-    max-width: 1000px;
-    margin   : 0 auto;
+@media(min-width: 800px) {
+    :root {
+        /* FONT SIZE*/
+        --fs-h1  : 4.5rem;
+        --fs-h2  : 3.75rem;
+        --fs-h3  : 1.5rem;
+        --fs-body: 1.125rem;
+    }
+
+    .portfolio__item {
+        width   : 30%;
+        height  : 250px;
+        overflow: hidden;
+    }
+
 }
 
-.portfolio-item-individual p {
-    max-width   : 600px;
-    margin-left : auto;
-    margin-right: auto;
-}
 
-/* DIGITAL OCEAN: droplet*/
+@media(min-width: 600px) {
+    .about-me {
+        display              : grid;
+        grid-template-columns: 1fr 200px;
+        grid-template-areas  :
+            "title img"
+            "subtitle img"
+            "text img";
+        grid-column-gap: 2em;
+    }
+
+    .section__title--about {
+        grid-area  : title;
+        grid-column: 1;
+    }
+
+    .section__subtitle--about {
+        grid-column  : 1/-1;
+        /*one side to other side*/
+        grid-row     : 2;
+        position     : relative;
+        left         : -1em;
+        width        : calc(100% + 2em);
+        padding-left : 1em;
+        /*moving and do be over image*/
+        padding-right: calc(200px + 4em);
+    }
+
+    .about-me__img {
+        grid-area: img;
+        position : relative;
+        z-index  : 2;
+    }
+}
