@@ -21,11 +21,10 @@
 }
 
 .portfolio {
-    display        : flex;
-    flex-wrap      : wrap;
-    align-items    : center;
-    justify-content: center;
+    display        : grid;
+    grid-template-columns: repeat(var(--number-columns,1),1fr);
     gap            : 10px;
+    align-content: center;
 }
 
 html {
@@ -396,6 +395,7 @@ generic: 300 600 900 for media query*/
         transform 750ms cubic-bezier(.5, 0, .5, 1),
         opacity 250ms linear;
     background-size: cover;
+   
 }
 
 .portfolio__item:focus {
@@ -403,7 +403,9 @@ generic: 300 600 900 for media query*/
     z-index : 2;
     /* line of focus over the images*/
 }
-
+.portfolio__item{
+    display: block;
+}
 .portfolio__img:hover,
 .portfolio__item:focus .portfolio__img {
     transform: scale(1.1);
@@ -457,22 +459,6 @@ generic: 300 600 900 for media query*/
     /*there space to click*/
 }
 
-@media(min-width: 800px) {
-    :root {
-        /* FONT SIZE*/
-        --fs-h1  : 4.5rem;
-        --fs-h2  : 3.75rem;
-        --fs-h3  : 1.5rem;
-        --fs-body: 1.125rem;
-    }
-
-    .portfolio__item {
-        width   : 30%;
-        height  : 250px;
-        overflow: hidden;
-    }
-
-}
 
 
 @media(min-width: 600px) {
@@ -507,5 +493,30 @@ generic: 300 600 900 for media query*/
         grid-area: img;
         position : relative;
         z-index  : 2;
+    }
+    .portfolio{
+        --number-columns: 2;
+    }
+    .portfolio__item{
+        overflow: hidden;
+        height: 270px;
+    }
+}
+
+@media(min-width: 800px) {
+    :root {
+        /* FONT SIZE*/
+        --fs-h1  : 4.5rem;
+        --fs-h2  : 3.75rem;
+        --fs-h3  : 1.5rem;
+        --fs-body: 1.125rem;
+    }
+
+   .portfolio__item{
+       overflow: hidden;
+       height: 270px;
+   }
+    .portfolio{
+        --number-columns: 3;
     }
 }
